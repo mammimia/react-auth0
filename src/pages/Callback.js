@@ -8,7 +8,7 @@ const Callback = ({ auth }) => {
     } else {
       throw new Error('Invalid callback URL.');
     }
-  }, []);
+  });
 
   return <h1>Loading...</h1>;
 };
