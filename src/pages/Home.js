@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = ({ auth }) => {
+  const { isAuthenticated, login } = auth;
   return (
     <div>
       <h1>Home</h1>
-      {auth.isAuthenticated() ? (
+      {isAuthenticated() ? (
         <Link to="/profile">View profile</Link>
       ) : (
-        <button onClick={() => auth.login()}>Log In</button>
+        <button onClick={() => login()}>Log In</button>
       )}
     </div>
   );

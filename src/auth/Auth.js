@@ -45,4 +45,34 @@ export default class Auth {
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   };
+
+  logout = () => {
+    // Clear access token and ID token from local storage
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+    this.userProfile = null;
+    this.auth0.logout({
+      clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,
+      returnTo: 'http://localhost:3000'
+    });
+  };
+
+  getAccessToken = () => {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('No access token found');
+    }
+    return accessToken;
+  };
+
+  getProfile = (callback) => {
+    if (this.userProfile) return callback(this.userProfile);
+    this.auth0.client.userInfo(this.getAccessToken(), (err, profile) => {
+      if (profile) {
+        this.userProfile = profile;
+      }
+      callback(err, profile);
+    });
+  };
 }

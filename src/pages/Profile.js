@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Profile = () => {
+const Profile = ({ auth }) => {
+  const [profile, setProfile] = useState(null);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const { getProfile } = auth;
+    getProfile((profile, error) => {
+      setProfile(profile);
+      setError(error);
+    });
+  });
+
+  if (!profile) return null;
+
   return (
-    <div>
+    <>
       <h1>Profile</h1>
-    </div>
+      <p>{profile.nickname}</p>
+      <img
+        style={{ maxWidth: 50, maxHeight: 50 }}
+        src={profile.picture}
+        alt=""
+      />
+      <pre>{JSON.stringify(profile, null, 2)}</pre>
+    </>
   );
 };
 
