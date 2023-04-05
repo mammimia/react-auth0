@@ -5,6 +5,7 @@ This is a Auth0 Authentication project. It was developed for learning purposes.
 ## Tech Stack
 
 - React
+- Auth0
 - Express.js
 
 ## Project Initialization Steps
