@@ -16,9 +16,9 @@ Create .env file in project directory. You need to fill variables below in that 
 ```bash
   REACT_APP_AUTH0_DOMAIN=${DOMAIN}
   REACT_APP_AUTH0_CLIENT_ID=${CLIENT_ID}
-  REACT_APP_AUTH0_CALLBACK_URL=${CALLBACK_URL} -> This is "http://localhost:3000 by default"
-  REACT_APP_AUTH0_AUDIENCE=${AUDIENCE} -> This is "http://localhost:3001 by default"
-  REACT_APP_API_URL=${API_URL} -> This is "http://localhost:3001 by default"
+  REACT_APP_AUTH0_CALLBACK_URL=${CALLBACK_URL} -> This is "http://localhost:3000" by default
+  REACT_APP_AUTH0_AUDIENCE=${AUDIENCE} -> This is "http://localhost:3001" by default
+  REACT_APP_API_URL=${API_URL} -> This is "http://localhost:3001" by default
 ```
 
 Don't forget to set "Allowed Callback URLs" and "Allowed Logout URLs" in auth0 application.
